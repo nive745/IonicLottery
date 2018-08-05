@@ -14,3 +14,7 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.page-login .list-ios[inset]{margin:0}
+.toolbar,.toolbar-background-md, ion-header, .toolbar-background{    background: #33539d}
+.toolbar-title,.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{color:#fff}
+.content {background-color:#f0f0f0; color:#4e4e4e}

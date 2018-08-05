@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Who are you?</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="grid-basic-page" padding>
+ <button ion-button class="logout-btn" block clear (click)="logout()">Logout!</button>
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/1.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+     <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/2.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/3.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+     <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/4.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/5.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+     <ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/6.jpg"/>
+	      <div class="info"><label>John Deo</label>
+	      	<p>Shift 8 to 10pm</p>
+	      </div>
+	  	</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <ion-list>
+    <ion-item class="width50" *ngFor="let c of employees" (click)="GotoScanPage()">
+    	<ion-col>
+        <div class="avatar-container">
+	      <img src="../assets/imgs/{{c.img}}"/>
+	      <div class="info"><label>{{c.name}}</label>
+	      	<p>{{c.shift}}</p>
+	      </div>
+	  	</div>
+      </ion-col>
+    </ion-item>
+  </ion-list>
+</ion-content>
