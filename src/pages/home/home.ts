@@ -22,32 +22,30 @@ export class HomePage extends RequireAuthenticationPage {
      * @param navParams Navigation params.
      * @param authenticateProvider Authenticate provider.
      */
-
-      employees: string[];
-      errorMessage: string;
-      descending: boolean = false;
-      order: number;
-      column: string = 'name';
+    employees: string[];
+    errorMessage: string;
+    descending: boolean = false;
+    order: number;
+    column: string = 'name';
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public authenticateProvider: AuthenticateProvider, public rest: RestApiProvider) {
         super(navCtrl, navParams, authenticateProvider);
     }
 
     ionViewDidLoad() {
-    this.getCountries();
-  }
+        this.getEmployees();
+    }
 
-  getCountries() {
-    this.rest.getCountries()
-       .subscribe(
-         employees => this.employees = employees,
-         error =>  this.errorMessage = <any>error);
-  }
+    getEmployees() {
+        this.rest.getEmployees()
+            .subscribe(
+                employees => this.employees = employees,
+                error => this.errorMessage = < any > error);
+    }
 
-  GotoScanPage(){
+    GotoScanPage() {
         this.navCtrl.push('ScanPage');
     }
 
 
-  
 }

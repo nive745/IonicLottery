@@ -14,12 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'scaninventory.html',
 })
 export class ScanInventoryPage {
+    scancomplete = {
+        "GameName": "1 Crore Jackpot",
+        "PacketId": "PKT1234t",
+        "Cost": "12",
+        "Quantity": "100"
+    }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ScanInventoryPage');
-  }
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ScanInventoryPage');
+    }
 
+    GotoCompleteInventory() {
+        this.navCtrl.push('CompleteinventoryPage');
+    }
 }
