@@ -10,7 +10,10 @@
    </ion-navbar>
 </ion-header>
 <ion-content padding>
+   <ion-searchbar ></ion-searchbar>
    <ion-card *ngFor="let c of completeinventory">
+
+   
       <ion-card-header>
          {{c.GameName}}
       </ion-card-header>
@@ -24,7 +27,7 @@
          <ion-item>
             Price
             <ion-note item-end>
-               {{c.Cost}}
+               ${{c.Cost}}
             </ion-note>
          </ion-item>
          <ion-item>
@@ -40,7 +43,7 @@
             </ion-note>
          </ion-item>
          <ion-item>
-            Last Ticket
+            Last Ticket 
             <ion-note item-end>
                {{c.LastTicketNo}}
             </ion-note>
@@ -51,9 +54,10 @@
          <ion-item>
             Total Amount
             <ion-note item-end>
-               {{c.TotalAmount}}
+              ${{c.TotalAmount}}
             </ion-note>
          </ion-item>
       </ion-card-header>
    </ion-card>
+   <button ion-button full >Complete Inventory</button>
 </ion-content>

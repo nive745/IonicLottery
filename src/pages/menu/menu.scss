@@ -1,0 +1,33 @@
+page-menu {
+  ion-toolbar.scrollable-segments.toolbar-md,
+  ion-toolbar.scrollable-segments {
+    ion-segment {
+      display: block;
+      overflow-x: scroll;
+      white-space: nowrap;
+
+      ion-segment-button.segment-button {
+        display: inline-block;
+        width: auto;
+        color: #fff;
+        font-size: 1em;
+      }
+      ion-segment-button.activated,
+      ion-segment-button.segment-activated {
+        border-color: #fff !important;
+      }
+    }
+  }
+
+  .segment-ios {
+    margin-left: 5px;
+  }
+
+  .toolbar-ios-dark-red .segment-ios .segment-button.segment-activated {
+    color: #fff;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 2px;
+  }
+}

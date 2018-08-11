@@ -11,12 +11,11 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
  */
 
 @IonicPage()
-@Component({
+@Component({  
   selector: 'page-completeinventory',
   templateUrl: 'completeinventory.html',
 })
 export class CompleteinventoryPage {
-
     completeinventory: string[];
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public rest: RestApiProvider) {}
@@ -26,7 +25,10 @@ export class CompleteinventoryPage {
 
         this.getCompleteInventory();
     }
+    
+    errorMessage() {
 
+    }
     getCompleteInventory() {
         this.rest.getCompleteInventory()
             .subscribe(
@@ -35,4 +37,4 @@ export class CompleteinventoryPage {
     }
 
 
-}`
+}

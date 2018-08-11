@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MyApp } from './app.component';
@@ -13,7 +13,11 @@ import { AuthenticateProvider } from '../providers/authenticate/authenticate';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 
 import { HomePage } from '../pages/home/home';
+import { MenuPage } from './../pages/menu/menu';
 import { AuthenticatePage } from '../pages/authenticate/authenticate';
+
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Application module.
@@ -22,19 +26,22 @@ import { AuthenticatePage } from '../pages/authenticate/authenticate';
     declarations: [
         MyApp,
         AuthenticatePage,
-        HomePage
+        HomePage,
+        MenuPage
       
     ],
     imports: [
         BrowserModule,HttpClientModule,
-        IonicModule.forRoot(MyApp),
-        HttpModule
+    IonicModule.forRoot(MyApp),
+        HttpModule,
+        NgxQRCodeModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
         AuthenticatePage,
-        HomePage
+        HomePage,
+    MenuPage
        
     ],
     providers: [
@@ -42,7 +49,8 @@ import { AuthenticatePage } from '../pages/authenticate/authenticate';
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         AuthenticateProvider,
-    RestApiProvider
+        RestApiProvider,
+        BarcodeScanner
     ]
 })
 export class AppModule {}
