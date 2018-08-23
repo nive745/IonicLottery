@@ -22,15 +22,51 @@ import {
 })
 export class AddbundlePage {
     private bundle: any = {};
-    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {}
+    qauntitylist:any;
+    qauntityselected :any;
+    costlist:any;
+    costselected :any;
+  
+    constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+
+        this.qauntitylist = [
+            '10',
+            '20',
+            '30'    
+         ];
+         
+         this.costlist = [
+            '10',
+            '20',
+            '30'    
+         ];
+
+        
+    }
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad AddbundlePage');
     }
+    qauntityselect(item) {
+        this.bundle.Quantity = item;
+        localStorage.setItem('Quantity', item);
+        this.qauntityselected = item; 
+    };
+    isqauntityActive(item) {
+        return this.qauntityselected === item;
+    };
 
+    costselect(item) {
+        this.costselected = item;
+        this.bundle.Cost = item;
+        localStorage.setItem('Cost', item); 
+    };
+
+    iscostActive(item) {
+        return this.costselected === item;
+    };
     SelectQuantity(Quantity) {
-        this.bundle.Quantity = Quantity;
-        localStorage.setItem('Quantity', Quantity);
+        
     }
     
     GotoScanInventoryPage() {
@@ -64,9 +100,5 @@ export class AddbundlePage {
         
     }
 
-    SelectCost(Cost) {
-        this.bundle.Cost = Cost;
-        localStorage.setItem('Cost', Cost);
-    }
 
 }

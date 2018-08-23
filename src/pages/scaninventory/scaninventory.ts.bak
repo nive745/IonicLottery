@@ -1,0 +1,35 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams,    AlertController } from 'ionic-angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+/**
+ * Generated class for the ScanInventoryPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-scaninventory',
+  templateUrl: 'scaninventory.html',
+})
+export class ScanInventoryPage {
+    scancomplete = {
+        "GameName": localStorage.getItem("GameName"),
+        "PacketId": localStorage.getItem("PacketId"),
+        "Cost": localStorage.getItem("Cost"),
+        "Quantity": localStorage.getItem("Quantity"),
+
+    }
+
+    constructor(public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public authenticateProvider: AuthenticateProvider) {}
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ScanInventoryPage');
+    }
+GotoCompleteInventory1() {
+     this.navCtrl.push('CompleteinventoryPage');
+     }
+    
+}

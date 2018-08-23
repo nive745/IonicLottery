@@ -1,9 +1,23 @@
-import { Component} from '@angular/core';
-import { LoadingController, NavController, NavParams, AlertController} from 'ionic-angular';
-import { Http, Headers, RequestOptions } from '@angular/http';
-
-import { AuthenticateProvider} from '../../providers/authenticate/authenticate';
-import { HomePage } from '../home/home';
+import {
+    Component
+}
+from '@angular/core';
+import {
+    NavController, NavParams, AlertController
+}
+from 'ionic-angular';
+import {
+    Http
+}
+from '@angular/http';
+import {
+    AuthenticateProvider
+}
+from '../../providers/authenticate/authenticate';
+import {
+    HomePage
+}
+from '../home/home';
 import 'rxjs/Rx';
 /**
  * Authenticate page.
@@ -22,7 +36,7 @@ export class AuthenticatePage {
      * @param navParams Navigation params.
      * @param authenticateProvider Authenticate provider.
      */
-    constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, public authenticateProvider: AuthenticateProvider, public http: Http, private alertCtrl: AlertController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public authenticateProvider: AuthenticateProvider, private http: Http, private alertCtrl: AlertController) {
 
     }
 
@@ -30,22 +44,17 @@ export class AuthenticatePage {
      * Call authenticator.
      */
     public login(): void {
-        let headers1 = new Headers();
-        headers1.append("Content-Type", "application/json");
-     
-        const requestOptions = new RequestOptions({ headers: headers1 });
-
+        let headers = new Headers();
+        headers.append("Content-Type", "application/json");
 
         let body = {
             username: this.user.username,
             password: this.user.password
         };
-        this.loadingCtrl.create({
-            content: 'Please wait...',
-            duration: 3000,
-            dismissOnPageChange: true
-          }).present();
-        this.http.post('http://testing.jmsofttech.com/api/login', body, requestOptions)
+
+        this.http.post('http://testing.jmsofttech.com/api/login', body, {
+                headers: headers
+            })
             .map(res => res.json())
             .subscribe(data => {
                 if (data.IsSuccess == false) {

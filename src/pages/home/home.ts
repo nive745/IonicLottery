@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { RequireAuthenticationPage } from '../authenticate/require-authentication';
@@ -28,11 +28,16 @@ export class HomePage extends RequireAuthenticationPage {
     order: number;
     column: string = 'name';
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public authenticateProvider: AuthenticateProvider, public rest: RestApiProvider) {
+    constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams, public authenticateProvider: AuthenticateProvider, public rest: RestApiProvider) {
         super(navCtrl, navParams, authenticateProvider);
     }
 
     ionViewDidLoad() {
+        this.loadingCtrl.create({
+            content: 'Please wait...',
+            duration: 1000,
+            dismissOnPageChange: true
+          }).present();
         this.getEmployees();
         
     }
@@ -40,15 +45,9 @@ export class HomePage extends RequireAuthenticationPage {
     
 
     logout() {
-    this.authService.logout().then((result) => {
-      this.loading.dismiss();
-      let nav = this.app.getRootNav();
-      nav.setRoot(LoginPage);
-    }, (err) => {
-      this.loading.dismiss();
-      this.presentToast(err);
-    });
-  }
+    this.authenticateProvider.clearAuthenticatedUser()
+        this.navCtrl.setRoot('LoginPage');
+    }
 
     getEmployees() {
         

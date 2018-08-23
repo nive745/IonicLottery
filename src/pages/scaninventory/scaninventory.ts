@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,    AlertController } from 'ionic-angular';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
  * Generated class for the ScanInventoryPage page.
@@ -23,7 +23,7 @@ export class ScanInventoryPage {
 
     }
 
-    constructor(public http: HttpClient,public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public authenticateProvider: AuthenticateProvider) {}
+    constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public authenticateProvider: AuthenticateProvider) {}
 
     ionViewDidLoad() {
         console.log('ionViewDidLoad ScanInventoryPage');
@@ -37,18 +37,18 @@ GotoCompleteInventory1() {
 
        
         let user = this.authenticateProvider.getAuthenticatedUser();
-        this.scancomplete.EmployeeId = parseInt(user.id)
+        this.scancomplete['EmployeeId'] = localStorage.getItem('EmployeeId')
          let body = this.scancomplete;
         console.log(user)
-         let headers = new HttpHeaders(
-         {
-         'x-access-token':user.token
+        
+         let headers1 = new Headers();
+        headers1.append("Content-Type", "application/json");
+        headers1.append('x-access-token', user.token);
+        
+     
+        const requestOptions = new RequestOptions({ headers: headers1 });
 
-         });
-
-        this.http.post('http://testing.jmsofttech.com/api/bundle/add', body, {
-               headers
-            })
+        this.http.post('http://testing.jmsofttech.com/api/bundle/add', body, requestOptions)
             .map(res => res.json())
             .subscribe(data => {
                 if (data.IsSuccess == false) {
@@ -61,7 +61,7 @@ GotoCompleteInventory1() {
                     
                 }else{
                     
-        this.navCtrl.push('CompleteinventoryPage');
+                    this.navCtrl.push('CompleteinventoryPage');
                 }
                 
             }, (err) => {

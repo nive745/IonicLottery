@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { AlertController ,Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { MenuPage } from './../pages/menu/menu';
+//import { MenuPage } from './../pages/menu/menu';
 import { AuthenticatePage } from './../pages/authenticate/authenticate';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
 
@@ -18,8 +18,8 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authenticateProvider: AuthenticateProvider) {
+  public alertShown:boolean = false;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,public authenticateProvider: AuthenticateProvider, public alertCtrl: AlertController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -35,6 +35,37 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.platform.registerBackButtonAction(() => {
+        if (this.alertShown==false) {
+          this.presentConfirm();  
+        }
+      }, 0)
+    });
+  }
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Exit',
+      message: 'Do you want Exit?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+            this.alertShown=false;
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Yes clicked');
+            this.platform.exitApp();
+          }
+        }
+      ]
+    });
+     alert.present().then(()=>{
+      this.alertShown=true;
     });
   }
   public logout(): any {

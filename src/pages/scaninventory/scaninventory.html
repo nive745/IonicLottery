@@ -6,7 +6,9 @@
    -->
 <ion-header>
    <ion-navbar>
-      <ion-title>Bundle confirm</ion-title>
+      <ion-title>Bundle confirm</ion-title><button ion-button menuToggle right  >
+            <ion-icon name="menu"></ion-icon>
+          </button> 
    </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -28,5 +30,5 @@
          <h2>{{scancomplete.Quantity}}</h2>
       </ion-item>
    </ion-list>
-   <button ion-button full (click)="GotoCompleteInventory1()">Confirm Bundle</button>
+   <button ion-button full (click)="GotoCompleteInventory()">Confirm Bundle</button>
 </ion-content>

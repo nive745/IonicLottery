@@ -7,30 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Add bundle manual</ion-title>
+    <ion-title>Add bundle manual</ion-title><button ion-button menuToggle right  >
+        <ion-icon name="menu"></ion-icon>
+      </button> 
   </ion-navbar>
 
 </ion-header>
-<ion-content padding>
+<ion-content padding> 
+   
   <form class="page-bundle" (ngSubmit)="addbundle()" #AddbundleForm="ngForm">
-   <ion-list>
       
+   <ion-list>
       <ion-item>
-	     <ion-label color="primary" >Game Name</ion-label>
-	    <ion-input placeholder="Text Input" [(ngModel)]="bundle.GameName" name="GameName"></ion-input>
-	  </ion-item><ion-item>
-       <ion-label color="primary" >PacketId</ion-label>
-      <ion-input placeholder="Text Input" [(ngModel)]="bundle.PacketId" name="PacketId"></ion-input>
-    </ion-item><ion-item>
-         <ion-label color="primary" >Number of Quantity</ion-label>
-       <ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectCost(10)">10</ion-badge><ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectCost(20)">20</ion-badge><ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectCost(30)">30</ion-badge>
-      </ion-item>
-     <ion-item>
-         <ion-label color="primary" >Cost</ion-label>
-          <ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectQuantity(10)">$10</ion-badge><ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectQuantity(20)">$20</ion-badge><ion-badge item-end [ngClass]="{'active': isActive}" (click)="SelectQuantity(30)">$30</ion-badge>
-          
-         
-      </ion-item>
+          <ion-label color="" stacked>GameName</ion-label>
+          <ion-input class="addbundle-input" placeholder="GameName" [(ngModel)]="bundle.GameName" name="GameName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="" stacked>PacketId</ion-label>
+            <ion-input class="addbundle-input" placeholder="PacketId" [(ngModel)]="bundle.PacketId" name="PacketId"></ion-input>
+          </ion-item>
+      <div class="addbundle-input">
+          <p >Quantity</p>
+          <div> <ion-badge *ngFor="let n of qauntitylist" (click)="qauntityselect(n)" [ngClass]="{qauntityselected: isqauntityActive(n)}">{{n}}</ion-badge>
+           </div>
+      </div>
+      <div class="addbundle-input">
+          <p >Cost</p>
+          <div> <ion-badge *ngFor="let n of costlist" (click)="costselect(n)" [ngClass]="{costselected: iscostActive(n)}">{{n}}</ion-badge>
+          </div>
+      </div>
+     
      
      <!--  <ion-item>
          <p>PacketId</p>

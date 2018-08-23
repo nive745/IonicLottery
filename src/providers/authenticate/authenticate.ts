@@ -1,4 +1,3 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -7,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthenticateProvider {
-    constructor(private http: Http) {
+    constructor() {
         console.log('Hello AuthenticateProvider Provider'); 
     }
 

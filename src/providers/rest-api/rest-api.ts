@@ -37,7 +37,7 @@ export class RestApiProvider {
 
   private extractData(res: Response) {
     console.log(res)
-    let body = [{"name":"John Deo", "img":"1.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"2.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"3.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"4.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"5.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"6.jpg", "shift":"10am to 12pm"}];
+   // let body = [{"name":"John Deo", "img":"1.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"2.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"3.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"4.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"5.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"6.jpg", "shift":"10am to 12pm"}];
     return res || {};
   }
 
