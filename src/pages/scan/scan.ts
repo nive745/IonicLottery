@@ -22,10 +22,16 @@ export class ScanPage {
   GotoScanInventoryPage() {
     this.navCtrl.push('ScanInventoryPage');
   }
+
+  GotoAddBunndlePage() {
+    this.navCtrl.push('AddbundlePage');
+  }
+
   scanCode() {
     this.barcodeScanner.scan().then(barcodeData => {
       this.scannedCode = barcodeData.text;
       alert(this.scannedCode);
+      this.navCtrl.push('ScanInventoryPage');
     }, (err) => {
       console.log('Error: ', err);
     });

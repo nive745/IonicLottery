@@ -66,11 +66,10 @@
     </ion-row>
   </ion-grid> -->
   <ion-list>
-    <ion-item class="width50" *ngFor="let c of employees" (click)="GotoScanPage()">
+    <ion-item class="width50" *ngFor="let c of employees" (click)="GotoScanPage(c.EmployeeId)">
     	<ion-col>
         <div class="avatar-container">
-	      <img src="../assets/imgs/{{c.img}}"/>
-	      <div class="info"><label>{{c.name}}</label>
+	      <img src="../assets/imgs/2.jpg" /> 	      <div class="info"><label>{{c.Name}}</label>
 	      	<p>{{c.shift}}</p>
 	      </div>
 	  	</div>

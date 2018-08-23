@@ -34,16 +34,34 @@ export class HomePage extends RequireAuthenticationPage {
 
     ionViewDidLoad() {
         this.getEmployees();
+        
     }
 
+    
+
+    logout() {
+    this.authService.logout().then((result) => {
+      this.loading.dismiss();
+      let nav = this.app.getRootNav();
+      nav.setRoot(LoginPage);
+    }, (err) => {
+      this.loading.dismiss();
+      this.presentToast(err);
+    });
+  }
+
     getEmployees() {
+        
         this.rest.getEmployees()
             .subscribe(
                 employees => this.employees = employees,
                 error => this.errorMessage = < any > error);
     }
 
-    GotoScanPage() {
+
+
+    GotoScanPage(EmployeeId) {
+    localStorage.setItem('EmployeeId', EmployeeId);
         this.navCtrl.push('ScanPage');
     }
 

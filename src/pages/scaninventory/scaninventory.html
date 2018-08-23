@@ -6,11 +6,10 @@
    -->
 <ion-header>
    <ion-navbar>
-      <ion-title>Scan Inventory</ion-title>
+      <ion-title>Bundle confirm</ion-title>
    </ion-navbar>
 </ion-header>
 <ion-content padding>
-   <h6>Scan complete.</h6>
    <ion-list>
       <ion-item>
          <p>Game Name</p>
@@ -22,12 +21,12 @@
       </ion-item>
       <ion-item>
          <p>Cost</p>
-         <h2>${{scancomplete.Quantity}}</h2>
+         <h2>${{scancomplete.Cost}}</h2>
       </ion-item>
       <ion-item>
          <p>Quantity</p>
          <h2>{{scancomplete.Quantity}}</h2>
       </ion-item>
    </ion-list>
-   <button ion-button full (click)="GotoCompleteInventory()">Complete Inventory</button>
+   <button ion-button full (click)="GotoCompleteInventory1()">Confirm Bundle</button>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
+//import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 /**

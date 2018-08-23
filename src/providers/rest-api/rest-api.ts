@@ -1,17 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { map, catchError } from 'rxjs/operators';
+import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 
 @Injectable()
 export class RestApiProvider {
 
   private apiUrl = 'https://restcountries.eu/rest/v2/all';
-
-  constructor(public http: HttpClient) {}
+  private getemployeeUrl = 'http://testing.jmsofttech.com/api/employee';
+  
+  constructor(public http: HttpClient, public authenticateProvider: AuthenticateProvider) {}
 
   getEmployees(): Observable<string[]> {
-    return this.http.get(this.apiUrl).pipe(
+    let user = this.authenticateProvider.getAuthenticatedUser();
+    console.log(user)
+     let headers = new HttpHeaders(
+     {
+     'x-access-token':user.token
+
+     });
+     
+    return this.http.get(this.getemployeeUrl,{headers}).pipe(
       map(this.extractData),
       catchError(this.handleError)
     );
@@ -26,9 +36,9 @@ export class RestApiProvider {
   }
 
   private extractData(res: Response) {
-
+    console.log(res)
     let body = [{"name":"John Deo", "img":"1.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"2.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"3.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"4.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"5.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"6.jpg", "shift":"10am to 12pm"}];
-    return body || {};
+    return res || {};
   }
 
   private extractData1(res: Response) {
