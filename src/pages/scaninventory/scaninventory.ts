@@ -61,7 +61,7 @@ GotoCompleteInventory1() {
                     
                 }else{
                     
-                    this.navCtrl.push('CompleteinventoryPage');
+                    this.navCtrl.push('AddbundlePage');
                 }
                 
             }, (err) => {
