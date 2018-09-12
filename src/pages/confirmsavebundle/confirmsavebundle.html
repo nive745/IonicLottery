@@ -1,0 +1,64 @@
+<!--
+  Generated template for the ConfirmsavebundlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>confirmsavebundle</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let c of completeinventory; let i = index">
+    <div  [class.show]="currentvalue == i" [class.hidden]="currentvalue != i">
+        <div *ngIf="c.CurrentValue; then thenBlock "></div>
+        <ng-template #thenBlock>
+            <ion-card-header>
+                {{c.GameName}}
+             </ion-card-header>
+             <ion-card-content>
+                <ion-item>
+                   Current Packet
+                   <ion-note item-end>
+                      {{c.PacketId}}
+                   </ion-note>
+                </ion-item>
+                <ion-item>
+                 Total Tickets
+                 <ion-note item-end>
+                    {{c.TotalQuantity}}
+                 </ion-note>
+              </ion-item>
+              <ion-item>
+               Current ticket number
+               <ion-note item-end>
+                 
+                  {{c.CurrentValue}}
+               </ion-note>
+            </ion-item>
+            
+            <ion-card-header class="topbotder">
+                <ion-item>
+                   Total Amount
+                   <ion-note item-end>
+                     ${{c.TotalValue}}
+                   </ion-note>
+                </ion-item>
+             </ion-card-header>
+                <!-- Add card conten  t here! -->
+             </ion-card-content>
+
+        </ng-template>
+        
+   
+     
+    </div>
+     
+   </ion-card>
+   <button ion-button full (click)="savebundles()">Add Bundle</button>
+</ion-content>

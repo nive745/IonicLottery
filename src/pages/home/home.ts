@@ -4,6 +4,8 @@ import { LoadingController, NavController, NavParams } from 'ionic-angular';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 import { RequireAuthenticationPage } from '../authenticate/require-authentication';
 
+import { SavebundleinventoryPage } from '../../pages/savebundleinventory/savebundleinventory';
+
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 
@@ -39,6 +41,7 @@ export class HomePage extends RequireAuthenticationPage {
             dismissOnPageChange: true
           }).present();
         this.getEmployees();
+        //this.navCtrl.setRoot(SavebundleinventoryPage);
         
     }
 
@@ -56,7 +59,6 @@ export class HomePage extends RequireAuthenticationPage {
                 employees => this.employees = employees,
                 error => this.errorMessage = < any > error);
     }
-
 
 
     GotoScanPage(EmployeeId) {

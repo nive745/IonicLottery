@@ -8,6 +8,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'scan.html',
 })
 export class ScanPage {
+
+  //@ViewChild(Nav) nav: Nav;
+
   qrData = null;
   createdCode = null;
   scannedCode = null;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,    AlertController } from 'ionic-angular';
+import { IonicPage,  NavController, NavParams,    AlertController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthenticateProvider } from '../../providers/authenticate/authenticate';
 /**
@@ -15,6 +15,7 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
   templateUrl: 'scaninventory.html',
 })
 export class ScanInventoryPage {
+// @ViewChild(Nav) nav: Nav;
     scancomplete = {
         "GameName": localStorage.getItem("GameName"),
         "PacketId": localStorage.getItem("PacketId"),

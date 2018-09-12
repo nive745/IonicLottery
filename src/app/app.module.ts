@@ -12,6 +12,9 @@ import { MyApp } from './app.component';
 import { AuthenticateProvider } from '../providers/authenticate/authenticate';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 
+
+import { SavebundleinventoryPage } from './../pages/savebundleinventory/savebundleinventory';
+
 import { HomePage } from '../pages/home/home';
 import { MenuPage } from './../pages/menu/menu';
 import { AuthenticatePage } from '../pages/authenticate/authenticate';
@@ -27,7 +30,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
         MyApp,
         AuthenticatePage,
         HomePage,
-        MenuPage
+        MenuPage,
+        SavebundleinventoryPage,
+        
       
     ],
     imports: [
@@ -41,7 +46,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
         MyApp,
         AuthenticatePage,
         HomePage,
-    MenuPage
+    MenuPage,
+    SavebundleinventoryPage
        
     ],
     providers: [

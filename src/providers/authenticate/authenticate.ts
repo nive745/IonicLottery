@@ -16,6 +16,7 @@ export class AuthenticateProvider {
      * @param user User.
      */
     private setAuthenticatedUser(user: any) {
+        debugger;
         if (user != null) {
             localStorage.setItem('app.userInfo', 'true');
             localStorage.setItem('app.userInfo.id', user.id);

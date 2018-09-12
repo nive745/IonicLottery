@@ -1,0 +1,36 @@
+page-savebundleinventory {
+    .pull-right{float: right;}
+    .item-inner,
+	.item-block,
+	.label {
+		padding: 0 !important;
+		margin: 0 !important
+	}
+	.card-header {
+		border-bottom: 1px solid #ececec;
+	}
+	.topbotder {
+		border-bottom: 0;
+		border-top: 1px solid #ececec;
+	}
+	.label {
+		color: #aeacb4;
+		font-size: 1.5rem;
+	}
+	.topbotder .label,
+	.note {
+		font-weight: 600;
+		color: #333;
+		font-size: 1.7rem !important;
+	}.card{margin: 0;
+        width: 100%;
+        margin-bottom: 2px;}
+    
+.show{display: block}
+.hidden{display: none}
+.new{    border: 1px solid #ddd;
+    padding: 10px;
+    color: #000;
+    float: right;
+    width: 60px;}
+}

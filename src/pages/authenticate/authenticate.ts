@@ -8,8 +8,7 @@ import 'rxjs/Rx';
 /**
  * Authenticate page.
  */
-@
-Component({
+@Component({
     selector: 'page-authenticate',
     templateUrl: 'authenticate.html',
 })

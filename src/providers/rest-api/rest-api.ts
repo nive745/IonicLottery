@@ -7,8 +7,9 @@ import { AuthenticateProvider } from '../../providers/authenticate/authenticate'
 @Injectable()
 export class RestApiProvider {
 
-  private apiUrl = 'https://restcountries.eu/rest/v2/all';
+  //private apiUrl = 'https://restcountries.eu/rest/v2/all';
   private getemployeeUrl = 'http://testing.jmsofttech.com/api/employee';
+  private getallinventory = 'http://testing.jmsofttech.com/api/Bundle/GetBundleInventroy';
   
   constructor(public http: HttpClient, public authenticateProvider: AuthenticateProvider) {}
 
@@ -28,7 +29,14 @@ export class RestApiProvider {
   }
 
   getCompleteInventory(): Observable<string[]> {
-   return this.http.get(this.apiUrl).pipe(
+    let user = this.authenticateProvider.getAuthenticatedUser();
+    
+    let headers = new HttpHeaders(
+      {
+      'x-access-token':user.token
+ 
+      });
+    return this.http.get(this.getallinventory,{headers}).pipe(
       map(this.extractData1),
       catchError(this.handleError)
     );
@@ -43,8 +51,9 @@ export class RestApiProvider {
 
   private extractData1(res: Response) {
 
-    let body = [{"GameName" : "1 Crore Jackpot","PacketId" : "PKT1234t","Cost" : "12","Quantity" : "100" ,"LastTicketNo" : "100", "TotalAmount" : 120}, {"GameName" : "2 Crore Jackpot","PacketId" : "PKT1234t","Cost" : "12","Quantity" : "100" ,"LastTicketNo" : "100", "TotalAmount" : 120}, {"GameName" : "3 Crore Jackpot","PacketId" : "PKT1234t","Cost" : "12","Quantity" : "100" ,"LastTicketNo" : "100", "TotalAmount" : 120}];
-    return body || {};
+    console.log(res)
+    // let body = [{"name":"John Deo", "img":"1.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"2.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"3.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"4.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"5.jpg", "shift":"10am to 12pm"}, {"name":"John Deo", "img":"6.jpg", "shift":"10am to 12pm"}];
+     return res || {};
   }
 
   private handleError (error: Response | any) {
